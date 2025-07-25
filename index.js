@@ -5,9 +5,9 @@ const { WebhookClient } = require('dialogflow-fulfillment');
 const app = express();
 app.use(bodyParser.json());
 
-// Keep-alive route for UptimeRobot
+// ✅ Keep-alive route for UptimeRobot or direct check
 app.get('/', (req, res) => {
-  res.send("Bharat Yatra webhook is live!");
+  res.send("✅ Bharat Yatra webhook is active");
 });
 
 const tourPrices = {
@@ -109,10 +109,6 @@ function askPackageDetails(agent) {
   }
 }
 
-app.get('/', (req, res) => {
-  res.send("✅ Bharat Yatra webhook is active");
-});
-
 app.post('/', (req, res) => {
   const agent = new WebhookClient({ request: req, response: res });
 
@@ -125,4 +121,3 @@ app.post('/', (req, res) => {
 });
 
 app.listen(3000, () => console.log("✅ Server is live on port 3000"));
-
